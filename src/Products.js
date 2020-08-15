@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AddStar from "./component/AddStar";
 import {
   Button,
