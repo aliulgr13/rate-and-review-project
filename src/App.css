@@ -1,0 +1,37 @@
+a {
+  text-decoration: none;
+}
+.card {
+  max-width: 345px;
+  background-color: beige !important;
+}
+.header {
+  margin: 50px !important;
+  text-align: center;
+}
+.media {
+  width: 300px;
+  height: 300px;
+}
+.actions {
+  justify-content: center;
+  display: flex;
+}
+.content {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.stars {
+  align-items: center;
+  display: flex;
+}
+.shoeImg {
+  width: 400px;
+  height: 400px;
+}
+.rewiews {
+  width: 100%;
+  margin-top: 20px;
+  padding-right: 50px;
+}
