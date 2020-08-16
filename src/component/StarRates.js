@@ -1,7 +1,7 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 
-function AddStar({ rater, rating }) {
+function StarRates({ rater, rating }) {
   return (
     <div className="stars">
       <ReactStars
@@ -16,4 +16,4 @@ function AddStar({ rater, rating }) {
   );
 }
 
-export default AddStar;
+export default StarRates;

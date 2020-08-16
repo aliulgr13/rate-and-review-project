@@ -1,5 +1,5 @@
 import React from "react";
-import AddStar from "./component/AddStar";
+import StarRates from "./component/StarRates";
 import {
   Button,
   Typography,
@@ -38,7 +38,7 @@ function Products({ shoes }) {
                         <Typography variant="body1" color="textPrimary">
                           {shoe.price}
                         </Typography>
-                        <AddStar
+                        <StarRates
                           rater={shoe.reviews.length}
                           rating={shoe.averageStar}
                         />

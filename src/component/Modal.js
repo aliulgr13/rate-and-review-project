@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-function Modal({ open, setOpen, setUserName }) {
-  const [value, setValue] = useState("");
+function Modal({ open, setOpen }) {
   const handleClose = () => {
     setOpen(false);
   };
   const onClick = () => {
-    setUserName(value);
     setOpen(false);
   };
   return (
@@ -26,20 +23,9 @@ function Modal({ open, setOpen, setUserName }) {
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To rate to this product, please enter your name here.
+            To rate to this product, please be sure provide your name and
+            review.
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Name and Surname"
-            type="text"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            fullWidth
-          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

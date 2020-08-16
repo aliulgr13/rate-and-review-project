@@ -13,6 +13,7 @@ import "./App.css";
 
 function App() {
   const [shoes, setShoes] = useState(dummyAPI);
+  console.log("App -> shoes", shoes);
   return (
     <Router>
       <Switch>
