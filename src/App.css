@@ -18,6 +18,12 @@ a {
   align-items: center;
   display: flex;
 }
-.button {
-  margin-top: 20px !important;
+.buttonGoProduct {
+  position: absolute !important;
+  left: 100px;
+  margin: 50px;
+}
+.paper {
+  margin-top: 20px;
+  padding: 10px;
 }

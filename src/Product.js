@@ -85,7 +85,6 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
                   variant="contained"
                   size="medium"
                   color="primary"
-                  className="button"
                   onClick={() => setOpenReview(true)}
                 >
                   Write a Costumer Review
@@ -99,15 +98,9 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
               <Divider />
               {productReviews.length > 0 ? (
                 productReviews.map((review) => (
-                  <Paper
-                    style={{ marginTop: "20px", padding: "10px" }}
-                    key={review.reviewId}
-                  >
+                  <Paper className="paper" key={review.reviewId}>
                     <AvatarContainer>
-                      <Avatar
-                        src="/broken-image.jpg"
-                        style={{ marginRight: "20px" }}
-                      />
+                      <Avatar src="/broken-image.jpg" />
                       <span>{review.name}</span>
                     </AvatarContainer>
 
@@ -135,7 +128,7 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
           <Grid item container md={8} xs={12} justify="center">
             <RateAndReview openReview={openReview} id="rate">
               <Button
-                style={{ position: "absolute", left: "100px", margin: "50px" }}
+                className="buttonGoProduct"
                 variant="outlined"
                 size="medium"
                 color="secondary"
