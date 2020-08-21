@@ -1,5 +1,5 @@
 import React from "react";
-import StarRates from "./component/StarRates";
+import ReactStars from "react-rating-stars-component";
 import {
   Button,
   Typography,
@@ -11,24 +11,22 @@ import {
   Grid,
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
-
-function Products({ shoes }) {
+import { StarsContainer, StyledHeader, TotalReviewsContainer } from "./styled";
+function Products({ shoeList, averageStarCalculator }) {
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography className="header" variant="h3" color="primary">
-            SHOES
-          </Typography>
+          <StyledHeader>Shoes</StyledHeader>
         </Grid>
         <Grid item xs={12}>
           <Grid container justify="space-around">
-            {shoes &&
-              shoes.map((shoe) => (
+            {shoeList &&
+              shoeList.map((shoe) => (
                 <Grid key={shoe.name} item>
                   <Link to={`/${shoe.id}`}>
                     <Card className="card">
-                      <CardHeader title={shoe.name} subheader={shoe.sport} />
+                      <CardHeader title={shoe.name} subheader={shoe.subtitle} />
                       <CardMedia
                         className="media"
                         image={shoe.img}
@@ -38,10 +36,19 @@ function Products({ shoes }) {
                         <Typography variant="body1" color="textPrimary">
                           {shoe.price}
                         </Typography>
-                        <StarRates
-                          rater={shoe.reviews.length}
-                          rating={shoe.averageStar}
-                        />
+                        <StarsContainer>
+                          <ReactStars
+                            count={5}
+                            edit={false}
+                            isHalf={true}
+                            value={averageStarCalculator(shoe.id).averageRate}
+                            size={37}
+                            activeColor="#ffd700"
+                          />
+                          <TotalReviewsContainer>
+                            ({averageStarCalculator(shoe.id).totalReviews})
+                          </TotalReviewsContainer>
+                        </StarsContainer>
                       </CardContent>
                       <CardActions disableSpacing className="actions">
                         <Button
@@ -50,7 +57,7 @@ function Products({ shoes }) {
                           size="medium"
                           color="primary"
                         >
-                          Rate
+                          Details
                         </Button>
                       </CardActions>
                     </Card>

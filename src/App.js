@@ -6,25 +6,47 @@ import {
   Redirect,
 } from "react-router-dom";
 import Products from "./Products";
-import Shoe from "./Shoe";
-import dummyAPI from "./dummyAPI";
-
+import Product from "./Product";
+import shoeList from "./dummyAPI";
 import "./App.css";
-
 function App() {
-  const [shoes, setShoes] = useState(dummyAPI);
-  console.log("App -> shoes", shoes);
+  const [reviews, setReviews] = useState([]);
+  const averageStarCalculator = (id) => {
+    const productReviews = reviews.filter((review) => review.productId === +id);
+    const totalRates = productReviews.reduce((acc, cur) => {
+      return acc + cur.star;
+    }, 0);
+    return {
+      averageRate:
+        productReviews.length === 0
+          ? 0
+          : Math.round((totalRates / productReviews.length) * 10) / 10,
+      totalReviews: productReviews.length,
+    };
+  };
+  const addReview = (newReview) => {
+    setReviews([...reviews, newReview]);
+  };
+
   return (
     <Router>
       <Switch>
         <Route path="/home" exact>
-          <Products shoes={shoes} />
+          <Products
+            shoeList={shoeList}
+            averageStarCalculator={averageStarCalculator}
+          />
         </Route>
         <Route path="/" exact>
           <Redirect to="/home" />
         </Route>
         <Route path="/:id">
-          <Shoe shoes={shoes} setShoes={setShoes} />
+          <Product
+            averageStarCalculator={averageStarCalculator}
+            shoeList={shoeList}
+            reviews={reviews}
+            addReview={addReview}
+          />
         </Route>
       </Switch>
     </Router>

@@ -6,11 +6,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-function Modal({ open, setOpen }) {
+function Modal({ open, setOpen, message }) {
   const handleClose = () => {
-    setOpen(false);
-  };
-  const onClick = () => {
     setOpen(false);
   };
   return (
@@ -20,19 +17,15 @@ function Modal({ open, setOpen }) {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">
+          Fill the Required Fields
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To rate to this product, please be sure provide your name and
-            review.
-          </DialogContentText>
+          <DialogContentText>{message}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={onClick} color="primary">
-            Subscribe
+            Close
           </Button>
         </DialogActions>
       </Dialog>
