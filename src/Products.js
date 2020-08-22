@@ -11,12 +11,7 @@ import {
 } from "@material-ui/core/";
 import Rating from "@material-ui/lab/Rating";
 import { Link } from "react-router-dom";
-import {
-  StarsContainer,
-  StyledHeader,
-  TotalReviewsContainer,
-  ButtonEditable,
-} from "./styled";
+import { StarsContainer, StyledHeader, TotalReviewsContainer } from "./styled";
 function Products({ shoeList, averageStarCalculator }) {
   return (
     <>
