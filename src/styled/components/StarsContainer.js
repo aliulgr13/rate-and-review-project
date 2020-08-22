@@ -4,5 +4,5 @@ export default styled.div`
   align-items: center;
   text-align: center;
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;

@@ -7,3 +7,4 @@ export { default as SizedImage } from "./components/SizedImage";
 export { default as StarsContainer } from "./components/StarsContainer";
 export { default as StyledHeader } from "./components/StyledHeader";
 export { default as TotalReviewsContainer } from "./components/TotalReviewsContainer";
+export { default as ButtonEditable } from "./components/ButtonEditable";

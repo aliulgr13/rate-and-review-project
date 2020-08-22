@@ -1,5 +1,4 @@
 import React from "react";
-import ReactStars from "react-rating-stars-component";
 import {
   Button,
   Typography,
@@ -10,8 +9,14 @@ import {
   CardActions,
   Grid,
 } from "@material-ui/core/";
+import Rating from "@material-ui/lab/Rating";
 import { Link } from "react-router-dom";
-import { StarsContainer, StyledHeader, TotalReviewsContainer } from "./styled";
+import {
+  StarsContainer,
+  StyledHeader,
+  TotalReviewsContainer,
+  ButtonEditable,
+} from "./styled";
 function Products({ shoeList, averageStarCalculator }) {
   return (
     <>
@@ -33,17 +38,19 @@ function Products({ shoeList, averageStarCalculator }) {
                         title={shoe.name}
                       />
                       <CardContent className="content">
-                        <Typography variant="body1" color="textPrimary">
+                        <Typography
+                          variant="body1"
+                          color="textPrimary"
+                          gutterBottom
+                        >
                           {shoe.price}
                         </Typography>
                         <StarsContainer>
-                          <ReactStars
-                            count={5}
-                            edit={false}
-                            isHalf={true}
+                          <Rating
                             value={averageStarCalculator(shoe.id).averageRate}
-                            size={37}
-                            activeColor="#ffd700"
+                            precision={0.5}
+                            readOnly
+                            size="large"
                           />
                           <TotalReviewsContainer>
                             ({averageStarCalculator(shoe.id).totalReviews})

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Avatar, Button, Grid, Paper, Typography } from "@material-ui/core/";
-import ReactStars from "react-rating-stars-component";
+import Rating from "@material-ui/lab/Rating";
 import { Link, useParams } from "react-router-dom";
 import RateReview from "./component/RateReview";
-
 import {
   AvatarContainer,
   Divider,
@@ -67,13 +66,11 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
                 {selectedShoe.price}
               </Typography>
               <StarsContainer>
-                <ReactStars
-                  count={5}
-                  edit={false}
-                  isHalf={true}
+                <Rating
                   value={averageStarCalculator(id).averageRate}
-                  size={37}
-                  activeColor="#ffd700"
+                  precision={0.5}
+                  readOnly
+                  size="large"
                 />
                 <TotalReviewsContainer>
                   ({averageStarCalculator(id).totalReviews})
@@ -103,14 +100,11 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
                       <Avatar src="/broken-image.jpg" />
                       <span>{review.name}</span>
                     </AvatarContainer>
-
-                    <ReactStars
-                      count={5}
-                      edit={false}
-                      isHalf={true}
+                    <Rating
                       value={review.star}
-                      size={20}
-                      activeColor="#ffd700"
+                      precision={0.5}
+                      readOnly
+                      size="small"
                     />
                     <Typography variant="body2" color="textSecondary">
                       Reviewed on {review.time.toLocaleString()}

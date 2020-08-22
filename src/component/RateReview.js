@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
-import ReactStars from "react-rating-stars-component";
 import { v4 as uuidv4 } from "uuid";
 import { Button, TextField } from "@material-ui/core/";
+import Rating from "@material-ui/lab/Rating";
 import { RateStars } from "../styled";
 
 function RateReview({ sendReview, id, setOpenReview }) {
@@ -11,7 +11,7 @@ function RateReview({ sendReview, id, setOpenReview }) {
   const [newComment, setNewComment] = useState("");
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState("");
-  const ratingChanged = (newRating) => {
+  const ratingChanged = (event, newRating) => {
     newSetStar(newRating);
   };
   const createReview = () => {
@@ -49,16 +49,12 @@ function RateReview({ sendReview, id, setOpenReview }) {
       <Modal open={open} setOpen={setOpen} message={message} />
       <div>
         <RateStars>
-          <ReactStars
-            count={5}
+          <Rating
+            name="hover-feedback"
             value={newStar}
-            isHalf={true}
+            precision={0.5}
             onChange={ratingChanged}
-            size={70}
-            emptyIcon={<i className="far fa-star"></i>}
-            halfIcon={<i className="fa fa-star-half-alt"></i>}
-            fullIcon={<i className="fa fa-star"></i>}
-            activeColor="#ffd700"
+            size="large"
           />
         </RateStars>
         <TextField
