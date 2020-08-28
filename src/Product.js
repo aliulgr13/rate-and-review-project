@@ -13,6 +13,13 @@ import {
   StyledHeader,
   TotalReviewsContainer,
 } from "./styled";
+import { computeAverageStar } from "./utils/helpers";
+import styled from "styled-components";
+
+const StyledPaper = styled(Paper)`
+  margin-top: 50px;
+  padding: 50px;
+`;
 
 function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
   const { id } = useParams();
@@ -28,7 +35,7 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
     <>
       <Grid container spacing={4} justify="center" alignItems="flex-end">
         <Grid item xs={8}>
-          <StyledHeader secondary> Review the Product</StyledHeader>
+          <StyledHeader secondary>Product Details</StyledHeader>
         </Grid>
         <Grid item container xs={12} direction="row" justify="space-around">
           <Grid item container md={2} xs={1} justify="flex-end">
@@ -67,13 +74,13 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
               </Typography>
               <StarsContainer>
                 <Rating
-                  value={averageStarCalculator(id).averageRate}
+                  value={computeAverageStar(productReviews)}
                   precision={0.5}
                   readOnly
                   size="large"
                 />
                 <TotalReviewsContainer>
-                  ({averageStarCalculator(id).totalReviews})
+                  ({productReviews.length})
                 </TotalReviewsContainer>
               </StarsContainer>
               <a href="#rate">
@@ -95,22 +102,17 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
               <Divider />
               {productReviews.length > 0 ? (
                 productReviews.map((review) => (
-                  <Paper className="paper" key={review.reviewId}>
+                  <StyledPaper key={review.reviewId}>
                     <AvatarContainer>
                       <Avatar src="/broken-image.jpg" />
                       <span>{review.name}</span>
                     </AvatarContainer>
-                    <Rating
-                      value={review.star}
-                      precision={0.5}
-                      readOnly
-                      size="small"
-                    />
+                    <Rating value={review.star} readOnly size="small" />
                     <Typography variant="body2" color="textSecondary">
                       Reviewed on {review.time.toLocaleString()}
                     </Typography>
                     <Typography variant="h5">{review.comment}</Typography>
-                  </Paper>
+                  </StyledPaper>
                 ))
               ) : (
                 <Typography variant="body2" color="textSecondary">

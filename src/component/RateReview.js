@@ -52,7 +52,6 @@ function RateReview({ sendReview, id, setOpenReview }) {
           <Rating
             name="hover-feedback"
             value={newStar}
-            precision={0.5}
             onChange={ratingChanged}
             size="large"
           />
