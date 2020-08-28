@@ -123,15 +123,6 @@ function Product({ shoeList, reviews, addReview, averageStarCalculator }) {
           </Grid>
           <Grid item container md={8} xs={12} justify="center">
             <RateAndReview openReview={openReview} id="rate">
-              <Button
-                className="buttonGoProduct"
-                variant="outlined"
-                size="medium"
-                color="secondary"
-                onClick={() => setOpenReview(false)}
-              >
-                Go Product
-              </Button>
               <Typography variant="h4" gutterBottom color="primary">
                 Review this product
               </Typography>

@@ -47,65 +47,70 @@ function RateReview({ sendReview, id, setOpenReview }) {
   return (
     <>
       <Modal open={open} setOpen={setOpen} message={message} />
-      <div>
-        <RateStars>
-          <Rating
-            name="hover-feedback"
-            value={newStar}
-            onChange={ratingChanged}
-            size="large"
-          />
-        </RateStars>
-        <TextField
-          id="firstName"
-          label="First name"
-          size="small"
-          margin="dense"
-          required
-          fullWidth
-          variant="outlined"
-          value={userName.firstName}
-          onChange={(e) => {
-            setUserName({ ...userName, firstName: e.target.value });
-          }}
+      <RateStars>
+        <Rating
+          name="hover-feedback"
+          value={newStar}
+          onChange={ratingChanged}
+          size="large"
         />
-        <TextField
-          id="lastName"
-          label="Last name"
-          required
-          size="small"
-          margin="dense"
-          fullWidth
-          variant="outlined"
-          value={userName.lastName}
-          onChange={(e) => {
-            setUserName({ ...userName, lastName: e.target.value });
-          }}
-        />
-        <TextField
-          id="outlined-full-width"
-          label="Write a Costumer Review"
-          fullWidth
-          required
-          margin="normal"
-          multiline
-          rows={4}
-          variant="outlined"
-          value={newComment}
-          onChange={(e) => {
-            setNewComment(e.target.value);
-          }}
-        />
-        <Button
-          fullWidth
-          variant="contained"
-          size="medium"
-          color="primary"
-          onClick={createReview}
-        >
-          Send Review
-        </Button>
-      </div>
+      </RateStars>
+      <TextField
+        id="firstName"
+        label="First name"
+        size="small"
+        margin="dense"
+        required
+        fullWidth
+        variant="outlined"
+        value={userName.firstName}
+        onChange={(e) => {
+          setUserName({ ...userName, firstName: e.target.value });
+        }}
+      />
+      <TextField
+        id="lastName"
+        label="Last name"
+        required
+        size="small"
+        margin="dense"
+        fullWidth
+        variant="outlined"
+        value={userName.lastName}
+        onChange={(e) => {
+          setUserName({ ...userName, lastName: e.target.value });
+        }}
+      />
+      <TextField
+        id="outlined-full-width"
+        label="Write a Costumer Review"
+        fullWidth
+        required
+        margin="normal"
+        multiline
+        rows={4}
+        variant="outlined"
+        value={newComment}
+        onChange={(e) => {
+          setNewComment(e.target.value);
+        }}
+      />
+      <Button
+        variant="contained"
+        size="medium"
+        color="primary"
+        onClick={createReview}
+      >
+        Send Review
+      </Button>
+      <Button
+        variant="contained"
+        size="medium"
+        color="secondary"
+        onClick={() => setOpenReview(false)}
+      >
+        Cancel Review
+      </Button>
     </>
   );
 }
